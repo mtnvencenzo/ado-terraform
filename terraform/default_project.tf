@@ -45,13 +45,6 @@ resource "azuredevops_repository_policy_case_enforcement" "default_project_repo_
   enforce_consistent_case = true
 }
 
-resource "azuredevops_repository_policy_check_credentials" "default_project_repo_policy_check_credentials" {
-  project_id = azuredevops_project.default_project.id
-  enabled    = true
-  blocking   = true
-}
-
-
 resource "azuredevops_serviceendpoint_azurerm" "default_project_service_endpoint_azurerm" {
   project_id                             = azuredevops_project.default_project.id
   service_endpoint_name                  = "sc-vec-eus-terraform-subscription-001"
@@ -70,10 +63,12 @@ resource "azuredevops_branch_policy_auto_reviewers" "default_project_branch_poli
   blocking = true
 
   settings {
-    auto_reviewer_ids  = [data.azuredevops_users.user_rvecchi.id]
+    auto_reviewer_ids  = [tolist(data.azuredevops_users.user_rvecchi.users)[0].id]
     submitter_can_vote = true
     minimum_number_of_reviewers = 1
-    scope {}
+    scope {
+      match_type     = "DefaultBranch"
+    }
   }
 }
 
@@ -82,7 +77,9 @@ resource "azuredevops_branch_policy_comment_resolution" "default_project_branch_
   enabled  = true
   blocking = true
   settings {
-    scope {}
+    scope {
+      match_type     = "DefaultBranch"
+    }
   }
 }
 
@@ -96,7 +93,9 @@ resource "azuredevops_branch_policy_merge_types" "default_project_branch_policy_
     allow_rebase_and_fast_forward = false
     allow_basic_no_fast_forward   = false
     allow_rebase_with_merge       = false
-    scope {}
+    scope {
+      match_type     = "DefaultBranch"
+    }
   }
 }
 
@@ -111,7 +110,9 @@ resource "azuredevops_branch_policy_min_reviewers" "default_project_branch_polic
     last_pusher_cannot_approve             = false
     allow_completion_with_rejects_or_waits = false
     on_push_reset_approved_votes           = true # OR on_push_reset_all_votes = true
-    scope {}
+    scope {
+      match_type     = "DefaultBranch"
+    }
   }
 }
 
@@ -121,6 +122,8 @@ resource "azuredevops_branch_policy_work_item_linking" "default_project_branch_p
   blocking = true
 
   settings {
-    scope {}
+    scope {
+      match_type     = "DefaultBranch"
+    }
   }
 }
