@@ -1,20 +1,10 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Repository for terraform resources to build out the devops projects and repos.
+For more information on actual setup for ado and terraform see [this readme](./terraform/readme.md).
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+> The files in this repo are used to build out all of the azure devops projects, repos and settings.  This repo is the only one that is manually created.  Any other manual azure devops setup should not be made and should be generated via updates to these terraform files.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+The `global` Azure Artifacts feed was manually created as no terraform support existed.
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+
+

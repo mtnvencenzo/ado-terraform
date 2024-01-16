@@ -1,0 +1,126 @@
+resource "azuredevops_project" "default_project" {
+  name               = "Default"
+  visibility         = var.visibility
+  version_control    = var.version_control
+  work_item_template = var.workitem_template
+  description        = "Default project for all vecchi owned solutions (managed by terraform)"
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "azuredevops_project_features" "default_project_features" {
+  project_id = azuredevops_project.default_project.id
+  features = {
+    "boards" = "enabled"
+    "repositories" = "enabled"
+    "pipelines" = "enabled"
+    "artifacts" = "enabled"
+    "testplans" = "disabled"
+  }
+}
+
+resource "azuredevops_environment" "dev" {
+  project_id = azuredevops_project.default_project.id
+  name       = "dev"
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "azuredevops_project_pipeline_settings" "default_project_pipeline_settings" {
+  project_id = azuredevops_project.default_project.id
+  enforce_job_scope = true
+  enforce_referenced_repo_scoped_token = false
+  enforce_settable_var = true
+  publish_pipeline_metadata = false
+  status_badges_are_private = false
+}
+
+resource "azuredevops_repository_policy_case_enforcement" "default_project_repo_policy_case_enforcement" {
+  project_id              = azuredevops_project.default_project.id
+  enabled                 = true
+  blocking                = true
+  enforce_consistent_case = true
+}
+
+resource "azuredevops_repository_policy_check_credentials" "default_project_repo_policy_check_credentials" {
+  project_id = azuredevops_project.default_project.id
+  enabled    = true
+  blocking   = true
+}
+
+
+resource "azuredevops_serviceendpoint_azurerm" "default_project_service_endpoint_azurerm" {
+  project_id                             = azuredevops_project.default_project.id
+  service_endpoint_name                  = "sc-vec-eus-terraform-subscription-001"
+  service_endpoint_authentication_scheme = "WorkloadIdentityFederation"
+  azurerm_spn_tenantid                   = var.azurerm_spn_tenantid
+  azurerm_subscription_id                = var.azurerm_subscription_id
+  azurerm_subscription_name              = var.azurerm_subscription_name
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "azuredevops_branch_policy_auto_reviewers" "default_project_branch_policy_auto_reviewers" {
+  project_id = azuredevops_project.default_project.id
+  enabled  = true
+  blocking = true
+
+  settings {
+    auto_reviewer_ids  = [data.azuredevops_users.user_rvecchi.id]
+    submitter_can_vote = true
+    minimum_number_of_reviewers = 1
+    scope {}
+  }
+}
+
+resource "azuredevops_branch_policy_comment_resolution" "default_project_branch_policy_comment_resolution" {
+  project_id = azuredevops_project.default_project.id
+  enabled  = true
+  blocking = true
+  settings {
+    scope {}
+  }
+}
+
+resource "azuredevops_branch_policy_merge_types" "default_project_branch_policy_merge_types" {
+  project_id = azuredevops_project.default_project.id
+  enabled  = true
+  blocking = true
+
+  settings {
+    allow_squash                  = true
+    allow_rebase_and_fast_forward = false
+    allow_basic_no_fast_forward   = false
+    allow_rebase_with_merge       = false
+    scope {}
+  }
+}
+
+resource "azuredevops_branch_policy_min_reviewers" "default_project_branch_policy_min_reviewers" {
+  project_id = azuredevops_project.default_project.id
+  enabled  = true
+  blocking = true
+
+  settings {
+    reviewer_count                         = 1
+    submitter_can_vote                     = true
+    last_pusher_cannot_approve             = false
+    allow_completion_with_rejects_or_waits = false
+    on_push_reset_approved_votes           = true # OR on_push_reset_all_votes = true
+    scope {}
+  }
+}
+
+resource "azuredevops_branch_policy_work_item_linking" "default_project_branch_policy_workitem_linking" {
+  project_id = azuredevops_project.default_project.id
+  enabled  = false
+  blocking = true
+
+  settings {
+    scope {}
+  }
+}
