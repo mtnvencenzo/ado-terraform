@@ -57,6 +57,12 @@ resource "azuredevops_serviceendpoint_azurerm" "default_project_service_endpoint
   }
 }
 
+resource "azuredevops_resource_authorization" "default_project_service_endpoint_azurerm_authorization" {
+  project_id  = azuredevops_project.default_project.id
+  resource_id = azuredevops_serviceendpoint_azurerm.default_project_service_endpoint_azurerm.id
+  authorized  = true
+}
+
 resource "azuredevops_serviceendpoint_azurerm" "default_project_service_endpoint_azurerm_content" {
   project_id                             = azuredevops_project.default_project.id
   service_endpoint_name                  = "sc-vec-eus-content-global-001"
@@ -68,6 +74,12 @@ resource "azuredevops_serviceendpoint_azurerm" "default_project_service_endpoint
   lifecycle {
     prevent_destroy = true
   }
+}
+
+resource "azuredevops_resource_authorization" "default_project_service_endpoint_azurerm_content_authorization" {
+  project_id  = azuredevops_project.default_project.id
+  resource_id = azuredevops_serviceendpoint_azurerm.default_project_service_endpoint_azurerm_content.id
+  authorized  = true
 }
 
 resource "azuredevops_branch_policy_auto_reviewers" "default_project_branch_policy_auto_reviewers" {
