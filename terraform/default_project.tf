@@ -57,6 +57,19 @@ resource "azuredevops_serviceendpoint_azurerm" "default_project_service_endpoint
   }
 }
 
+resource "azuredevops_serviceendpoint_azurerm" "default_project_service_endpoint_azurerm_content" {
+  project_id                             = azuredevops_project.default_project.id
+  service_endpoint_name                  = "sc-vec-eus-content-global-001"
+  service_endpoint_authentication_scheme = "WorkloadIdentityFederation"
+  azurerm_spn_tenantid                   = var.azurerm_spn_tenantid
+  azurerm_subscription_id                = var.azurerm_subscription_id
+  azurerm_subscription_name              = var.azurerm_subscription_name
+  resource_group                         = var.azurerm_resource_group_glo_content
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
 resource "azuredevops_branch_policy_auto_reviewers" "default_project_branch_policy_auto_reviewers" {
   project_id = azuredevops_project.default_project.id
   enabled  = true

@@ -37,3 +37,8 @@ variable "azurerm_subscription_name" {
 	type = string
 	default = "sub-vecchi-001"
 }
+
+variable "azurerm_resource_group_glo_content" {
+	type = string
+	default = "rg-vec-eus-glo-content-001"
+}
