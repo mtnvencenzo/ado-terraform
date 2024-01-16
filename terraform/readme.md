@@ -31,3 +31,6 @@ Create a Personal Access Token with `Full Access` to the organization and name i
 Make sure the repo has all the terraform and pipeline files pushed to it and create a pipeline using the `$/terraform-azure-pipelines.yml`.  Create a secret named `terraform_pat` and give it the value of the PAT created in the previous step.
 
 ### Step 6 (run the pipeline!)
+
+### Step 7'ish (delete default git repos)
+The first time a project is setup a default git repo is created using the name of the project.  There's no way to stop this so they should be manually deleted.

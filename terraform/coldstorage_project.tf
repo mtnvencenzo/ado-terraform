@@ -5,6 +5,7 @@ resource "azuredevops_project" "coldstorage_project" {
   work_item_template = var.workitem_template
   description        = "Project for storing old, out of date, or crappy unused code (managed by terraform)"
 
+
   lifecycle {
     prevent_destroy = true
   }
