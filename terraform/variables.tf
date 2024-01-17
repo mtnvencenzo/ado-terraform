@@ -47,3 +47,13 @@ variable "azurerm_storage_account_glo_content" {
 	type = string
 	default = "stvecglocontent001"
 }
+# TODO-use these
+variable "azurerm_resource_group_adm_terraform" {
+	type = string
+	default = "rg-vec-eus-administration-001"
+}
+
+variable "azurerm_storage_account_adm_terraform" {
+	type = string
+	default = "stveceusterraformstat001"
+}
