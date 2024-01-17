@@ -70,11 +70,11 @@ resource "azuread_service_principal" "default_project_service_endpoint_azurerm_s
 }
 
 
-resource "azurerm_role_assignment" "default_project_service_endpoint_azurerm_authorization_role_assignment" {
-  scope                 = data.azurerm_storage_container.global_content_storage_account_public_container.resource_manager_id
-  role_definition_name  = "Storage Blob Data Contributor"
-  principal_id          = azuread_service_principal.default_project_service_endpoint_azurerm_serviceprincipal.id
-}
+# resource "azurerm_role_assignment" "default_project_service_endpoint_azurerm_authorization_role_assignment" {
+#   scope                 = data.azurerm_storage_container.global_content_storage_account_public_container.resource_manager_id
+#   role_definition_name  = "Storage Blob Data Contributor"
+#   principal_id          = azuread_service_principal.default_project_service_endpoint_azurerm_serviceprincipal.id
+# }
 
 
 resource "azuredevops_branch_policy_auto_reviewers" "default_project_branch_policy_auto_reviewers" {
