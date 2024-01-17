@@ -42,3 +42,8 @@ variable "azurerm_resource_group_glo_content" {
 	type = string
 	default = "rg-vec-eus-glo-content-001"
 }
+
+variable "azurerm_storage_account_glo_content" {
+	type = string
+	default = "stvecglocontent001"
+}

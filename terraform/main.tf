@@ -27,3 +27,7 @@ data "azuredevops_users" "user_rvecchi" {
   principal_name = "rvecchi@gmail.com"
 }
 
+data "azurerm_storage_container" "global_content_storage_account_public_container" {
+  name                 = "public"
+  storage_account_name = var.azurerm_storage_account_glo_content
+}

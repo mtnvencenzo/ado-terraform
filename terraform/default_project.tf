@@ -64,24 +64,12 @@ resource "azuredevops_resource_authorization" "default_project_service_endpoint_
   authorized  = true
 }
 
-resource "azuredevops_serviceendpoint_azurerm" "default_project_service_endpoint_azurerm_content" {
-  project_id                             = azuredevops_project.default_project.id
-  service_endpoint_name                  = "sc-vec-eus-content-global-001"
-  service_endpoint_authentication_scheme = "WorkloadIdentityFederation"
-  azurerm_spn_tenantid                   = var.azurerm_spn_tenantid
-  azurerm_subscription_id                = var.azurerm_subscription_id
-  azurerm_subscription_name              = var.azurerm_subscription_name
-  resource_group                         = var.azurerm_resource_group_glo_content
-  lifecycle {
-    prevent_destroy = true
-  }
+resource "azurerm_role_assignment" "default_project_service_endpoint_azurerm_authorization_role_assignment" {
+  scope               = data.azurerm_storage_container.global_content_storage_account_public_container.resource_manager_id
+  role_definition_id  = "Storage Blob Data Contributor"
+  principal_id        = azuredevops_serviceendpoint_azurerm.default_project_service_endpoint_azurerm.id
 }
 
-resource "azuredevops_resource_authorization" "default_project_service_endpoint_azurerm_content_authorization" {
-  project_id  = azuredevops_project.default_project.id
-  resource_id = azuredevops_serviceendpoint_azurerm.default_project_service_endpoint_azurerm_content.id
-  authorized  = true
-}
 
 resource "azuredevops_branch_policy_auto_reviewers" "default_project_branch_policy_auto_reviewers" {
   project_id = azuredevops_project.default_project.id
