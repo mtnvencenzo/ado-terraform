@@ -58,16 +58,16 @@ resource "azuredevops_serviceendpoint_azurerm" "default_project_service_endpoint
   }
 }
 
-resource "azuredevops_resource_authorization" "default_project_service_endpoint_azurerm_authorization" {
+resource "azuredevops_pipeline_authorization" "default_project_service_endpoint_azurerm_pipeline_authorization" {
   project_id  = azuredevops_project.default_project.id
   resource_id = azuredevops_serviceendpoint_azurerm.default_project_service_endpoint_azurerm.id
-  authorized  = true
+  type        = "endpoint"
 }
 
 resource "azurerm_role_assignment" "default_project_service_endpoint_azurerm_authorization_role_assignment" {
-  scope               = data.azurerm_storage_container.global_content_storage_account_public_container.resource_manager_id
-  role_definition_id  = "Storage Blob Data Contributor"
-  principal_id        = azuredevops_serviceendpoint_azurerm.default_project_service_endpoint_azurerm.id
+  scope                 = data.azurerm_storage_container.global_content_storage_account_public_container.resource_manager_id
+  role_definition_name  = "Storage Blob Data Contributor"
+  principal_id          = azuredevops_serviceendpoint_azurerm.default_project_service_endpoint_azurerm.id
 }
 
 
