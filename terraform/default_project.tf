@@ -64,8 +64,9 @@ resource "azuredevops_pipeline_authorization" "default_project_service_endpoint_
   type        = "endpoint"
 }
 
-data "azuread_service_principal" "default_project_service_endpoint_azurerm_serviceprincipal" {
+resource "azuread_service_principal" "default_project_service_endpoint_azurerm_serviceprincipal" {
   client_id = azuredevops_serviceendpoint_azurerm.default_project_service_endpoint_azurerm.service_principal_id
+  use_existing   = true
 }
 
 
