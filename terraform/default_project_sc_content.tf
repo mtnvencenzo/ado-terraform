@@ -6,7 +6,7 @@ resource "azuread_application" "app_reg_default_project_content" {
 }
 
 resource "azuread_application_password" "app_reg_default_project_content_password" {
-  application_object_id = azuread_application.app_reg_default_project_content.object_id
+  application_id = azuread_application.app_reg_default_project_content.id
   display_name          = "primary"
   lifecycle {
     prevent_destroy = true
@@ -14,7 +14,7 @@ resource "azuread_application_password" "app_reg_default_project_content_passwor
 }
 
 resource "azuread_service_principal" "app_reg_default_project_content_service_principal" {
-  client_id                     = azuread_application.app_reg_default_project_content.application_id
+  client_id                     = azuread_application.app_reg_default_project_content.client_id
   app_role_assignment_required  = false
   feature_tags {
     enterprise = true
