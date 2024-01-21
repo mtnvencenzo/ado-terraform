@@ -1,5 +1,5 @@
 resource "azuredevops_project_pipeline_settings" "latest_project_pipeline_settings" {
-  project_id = azuredevops_project.default_project.id
+  project_id = azuredevops_project.latest_project.id
   enforce_job_scope = false
   enforce_job_scope_for_release = false
   enforce_referenced_repo_scoped_token = false

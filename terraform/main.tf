@@ -27,8 +27,8 @@ data "azuredevops_users" "user_rvecchi" {
   principal_name = "rvecchi@gmail.com"
 }
 
-module "prj_latest" {
-    source        	                = "./prj_latest"
+module "latest_project" {
+    source        	                = "./projects/latest"
     workitem_template               = var.workitem_template
     version_control                 = var.version_control
     visibility                      = var.visibility
