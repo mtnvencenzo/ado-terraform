@@ -12,7 +12,7 @@ resource "azuredevops_branch_policy_auto_reviewers" "default_project_branch_poli
   blocking = true
 
   settings {
-    auto_reviewer_ids  = [tolist(data.azuredevops_users.user_rvecchi.users)[0].id]
+    auto_reviewer_ids  = [var.default_project_user.id]
     submitter_can_vote = true
     minimum_number_of_reviewers = 1
     scope {
