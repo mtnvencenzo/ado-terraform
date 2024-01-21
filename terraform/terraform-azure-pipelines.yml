@@ -74,7 +74,7 @@ stages:
               provider: 'azurerm'
               workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
               environmentServiceNameAzureRM: '$(serviceConnectionName)'
-              commandOptions: '-var "PAT=$(terraform_pat)"'
+              commandOptions: '-var "PAT=$(terraform_pat)" -var-file="environment_vars/dev.tfvars"'
 
           - task: TerraformTaskV4@4
             displayName: 'Terraform > Apply'
@@ -84,5 +84,5 @@ stages:
               provider: 'azurerm'
               workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
               environmentServiceNameAzureRM: '$(serviceConnectionName)'
-              commandOptions: '-var "PAT=$(terraform_pat)" -auto-approve'
+              commandOptions: '-var "PAT=$(terraform_pat)" -var-file="environment_vars/dev.tfvars" -auto-approve'
 
