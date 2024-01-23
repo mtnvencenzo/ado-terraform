@@ -1,5 +1,5 @@
-resource "azurerm_storage_container" "terraform_cezzi_container" {
-  name                  = "terraform-cezzi"
+resource "azurerm_storage_container" "terraform_deepsleep_container" {
+  name                  = "terraform-deepsleep"
   storage_account_name  = data.azurerm_storage_account.terraform_storage_account.name
   container_access_type = "private"
   depends_on = [
@@ -11,8 +11,8 @@ resource "azurerm_storage_container" "terraform_cezzi_container" {
 }
 
 
-resource "azurerm_role_assignment" "terraform_cezzi_container_auth_role_assignment" {
-  scope                 = azurerm_storage_container.terraform_cezzi_container.resource_manager_id
+resource "azurerm_role_assignment" "terraform_deepsleep_container_auth_role_assignment" {
+  scope                 = azurerm_storage_container.terraform_deepsleep_container.resource_manager_id
   role_definition_name  = "Owner"
   principal_id          = azuread_service_principal.app_reg_latest_project_service_principal.id
   lifecycle {

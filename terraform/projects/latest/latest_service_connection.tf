@@ -54,6 +54,18 @@ resource "azuredevops_pipeline_authorization" "app_reg_latest_project_sc_sp_pipe
   }
 }
 
+
+
+resource "azurerm_role_assignment" "app_reg_latest_project_sc_terraform_storage_account_auth_role_assignment" {
+  scope                 = data.azurerm_storage_account.terraform_storage_account.id
+  role_definition_name  = "Contributor"
+  principal_id          = azuread_service_principal.app_reg_latest_project_service_principal.id
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+
 resource "azurerm_role_assignment" "latest_project_global_nuget_resource_group_owner_auth_role_assignment" {
   scope                 = azurerm_resource_group.latest_project_global_nuget_resource_group.id
   role_definition_name  = "Owner"
@@ -82,15 +94,3 @@ resource "azurerm_role_assignment" "latest_project_global_nuget_resource_group_b
     azuredevops_serviceendpoint_azurerm.app_reg_latest_project_sc_sp
   ]
 }
-
-# resource "azurerm_role_assignment" "app_reg_latest_project_sc_sp_authorization_role_assignment" {
-#   scope                 = data.azurerm_storage_container.global_content_storage_account_public_container.resource_manager_id
-#   role_definition_name  = "Storage Blob Data Contributor"
-#   principal_id          = azuread_service_principal.app_reg_latest_project_content_service_principal.id
-#   lifecycle {
-#     prevent_destroy = true
-#   }
-#   depends_on = [ 
-#     azurerm_resource_group.latest_project_global_nuget_resource_group
-#   ]
-# }
