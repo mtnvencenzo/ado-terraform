@@ -43,6 +43,7 @@ resource "azurerm_role_assignment" "latest_project_dev_drinks_resource_group_blo
 
 resource "azurerm_aadb2c_directory" "dev_drinks_b2c_directory" {
   resource_group_name     = azurerm_resource_group.latest_project_dev_drinks_resource_group.name
+  display_name            = "Dev Drinks B2C Diectory"
   country_code            = "US"
   data_residency_location = "United States"
   domain_name             = "dev${var.sub}drinks.onmicrosoft.com"
