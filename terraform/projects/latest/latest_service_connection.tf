@@ -5,6 +5,7 @@ resource "azuread_application" "app_reg_latest_project" {
   }
 }
 
+
 resource "azuread_application_password" "app_reg_latest_project_app_password" {
   application_id = azuread_application.app_reg_latest_project.id
   display_name          = "primary"
@@ -12,6 +13,7 @@ resource "azuread_application_password" "app_reg_latest_project_app_password" {
     prevent_destroy = true
   }
 }
+
 
 resource "azuread_service_principal" "app_reg_latest_project_service_principal" {
   client_id                     = azuread_application.app_reg_latest_project.client_id
@@ -24,6 +26,7 @@ resource "azuread_service_principal" "app_reg_latest_project_service_principal" 
     prevent_destroy = true
   }
 }
+
 
 resource "azuredevops_serviceendpoint_azurerm" "app_reg_latest_project_sc_sp" {
   project_id                                = azuredevops_project.latest_project.id
@@ -45,6 +48,7 @@ resource "azuredevops_serviceendpoint_azurerm" "app_reg_latest_project_sc_sp" {
   }
 }
 
+
 resource "azuredevops_pipeline_authorization" "app_reg_latest_project_sc_sp_pipeline_authorization" {
   project_id  = azuredevops_project.latest_project.id
   resource_id = azuredevops_serviceendpoint_azurerm.app_reg_latest_project_sc_sp.id
@@ -55,7 +59,6 @@ resource "azuredevops_pipeline_authorization" "app_reg_latest_project_sc_sp_pipe
 }
 
 
-
 resource "azurerm_role_assignment" "app_reg_latest_project_sc_terraform_storage_account_auth_role_assignment" {
   scope                 = data.azurerm_storage_account.terraform_storage_account.id
   role_definition_name  = "Contributor"
@@ -63,34 +66,4 @@ resource "azurerm_role_assignment" "app_reg_latest_project_sc_terraform_storage_
   lifecycle {
     prevent_destroy = true
   }
-}
-
-
-resource "azurerm_role_assignment" "latest_project_global_nuget_resource_group_owner_auth_role_assignment" {
-  scope                 = azurerm_resource_group.latest_project_global_nuget_resource_group.id
-  role_definition_name  = "Owner"
-  principal_id          = azuread_service_principal.app_reg_latest_project_service_principal.id
-  lifecycle {
-    prevent_destroy = true
-  }
-  depends_on = [ 
-    azurerm_resource_group.latest_project_global_nuget_resource_group,
-    azuread_service_principal.app_reg_latest_project_service_principal,
-    azuredevops_serviceendpoint_azurerm.app_reg_latest_project_sc_sp
-  ]
-}
-
-
-resource "azurerm_role_assignment" "latest_project_global_nuget_resource_group_blob_contrib_auth_role_assignment" {
-  scope                 = azurerm_resource_group.latest_project_global_nuget_resource_group.id
-  role_definition_name  = "Storage Blob Data Contributor"
-  principal_id          = azuread_service_principal.app_reg_latest_project_service_principal.id
-  lifecycle {
-    prevent_destroy = true
-  }
-  depends_on = [ 
-    azurerm_resource_group.latest_project_global_nuget_resource_group,
-    azuread_service_principal.app_reg_latest_project_service_principal,
-    azuredevops_serviceendpoint_azurerm.app_reg_latest_project_sc_sp
-  ]
 }
