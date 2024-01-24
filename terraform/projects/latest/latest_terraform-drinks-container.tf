@@ -1,14 +1,14 @@
-resource "azurerm_storage_container" "terraform_drinks_container" {
-  name                  = "terraform-drinks"
-  storage_account_name  = data.azurerm_storage_account.terraform_storage_account.name
-  container_access_type = "private"
-  depends_on = [
-    data.azurerm_storage_account.terraform_storage_account
-  ]
-  lifecycle {
-    prevent_destroy = true
-  }
-}
+# resource "azurerm_storage_container" "terraform_drinks_container" {
+#   name                  = "terraform-drinks"
+#   storage_account_name  = data.azurerm_storage_account.terraform_storage_account.name
+#   container_access_type = "private"
+#   depends_on = [
+#     data.azurerm_storage_account.terraform_storage_account
+#   ]
+#   lifecycle {
+#     prevent_destroy = true
+#   }
+# }
 
 
 # resource "azurerm_role_assignment" "terraform_drinks_container_auth_role_assignment" {
