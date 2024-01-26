@@ -38,11 +38,6 @@ variable "azurerm_subscription_name" {
 	default = "sub-vecchi-001"
 }
 
-variable "environment" {
-  type    = string
-  description = "Environment name, e.g. 'dev' or 'stg' or 'prd'"
-}
-
 variable "global_environment" {
   type    = string
   description = "Global environment name, e.g. 'dev' or 'stage' or 'prod'"
@@ -70,15 +65,4 @@ variable "sequence" {
   type    = string
   description = "The sequence number of the resource typically starting with 001"
   default = "001"
-}
-
-# TODO-use these
-variable "azurerm_resource_group_adm_terraform" {
-	type = string
-	default = "rg-vec-eus-administration-001"
-}
-
-variable "azurerm_storage_account_adm_terraform" {
-	type = string
-	default = "stveceusterraformstat001"
 }

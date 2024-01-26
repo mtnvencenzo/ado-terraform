@@ -2,7 +2,7 @@ resource "azurerm_resource_group" "latest_project_dev_drinks_resource_group" {
   name     = "rg-${var.sub}-${var.region}-dev-drinks-${var.sequence}"
   location = var.location
   tags     = {
-    Environment = "${var.environment}"
+    Environment = "dev"
     Application = "drinks"
   }
   lifecycle {

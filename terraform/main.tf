@@ -36,15 +36,30 @@ module "latest_project" {
     azurerm_spn_tenantid            = var.azurerm_spn_tenantid
     azurerm_subscription_id         = var.azurerm_subscription_id
     azurerm_subscription_name       = var.azurerm_subscription_name
-    environment                     = var.environment
     global_environment              = var.global_environment
     location                        = var.location
     sub                             = var.sub
     sequence                        = var.sequence
-    code_reviewer_user    = tolist(data.azuredevops_users.user_rvecchi.users)[0]
+    code_reviewer_user              = tolist(data.azuredevops_users.user_rvecchi.users)[0]
 
     providers = {
         azurerm = azurerm,
         azuredevops = azuredevops
     }
 }
+
+#  module "coldstorage_project" {
+#     source        	                = "./projects/coldstorage"
+#     workitem_template               = var.workitem_template
+#     version_control                 = var.version_control
+#     visibility                      = var.visibility
+#     devops_url                      = var.devops_url
+#     sub                             = var.sub
+#     sequence                        = var.sequence
+#     code_reviewer_user              = tolist(data.azuredevops_users.user_rvecchi.users)[0]
+
+#     providers = {
+#         azurerm = azurerm,
+#         azuredevops = azuredevops
+#     }
+# }
