@@ -32,7 +32,7 @@ resource "azuredevops_serviceendpoint_azurecr" "app_reg_latest_project_acr" {
 
 resource "azuredevops_pipeline_authorization" "app_reg_latest_project_acr_pipeline_authorization" {
   project_id  = azuredevops_project.latest_project.id
-  resource_id = azuredevops_serviceendpoint_azurerm.app_reg_latest_project_acr.id
+  resource_id = azuredevops_serviceendpoint_azurecr.app_reg_latest_project_acr.id
   type        = "endpoint"
   lifecycle {
     prevent_destroy = true
