@@ -67,3 +67,21 @@ resource "azurerm_role_assignment" "app_reg_latest_project_sc_terraform_storage_
     prevent_destroy = true
   }
 }
+
+resource "azurerm_role_assignment" "app_reg_latest_project_sc_acr_acrpush_role_assignment" {
+  scope                 = azurerm_container_registry.acr_latest_project.id
+  role_definition_name  = "AcrPush"
+  principal_id          = azuread_service_principal.app_reg_latest_project_service_principal.id
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "azurerm_role_assignment" "app_reg_latest_project_sc_acr_acrimagesigner_role_assignment" {
+  scope                 = azurerm_container_registry.acr_latest_project.id
+  role_definition_name  = "AcrImageSigner"
+  principal_id          = azuread_service_principal.app_reg_latest_project_service_principal.id
+  lifecycle {
+    prevent_destroy = true
+  }
+}
