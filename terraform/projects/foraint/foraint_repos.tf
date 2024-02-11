@@ -4,7 +4,7 @@
 # ---------------------------
 resource "azuredevops_git_repository" "foraint_project_repo_bhframework" {
   project_id        = azuredevops_project.foraint_project.id
-  name              = "ForaInt"
+  name              = "Fora-Int"
   default_branch    = "refs/heads/main"
   initialization {
     init_type = "Clean"
