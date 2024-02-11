@@ -63,3 +63,19 @@ module "latest_project" {
         azuredevops = azuredevops
     }
 }
+
+ module "foraint_project" {
+    source        	                = "./projects/foraint"
+    workitem_template               = var.workitem_template
+    version_control                 = var.version_control
+    visibility                      = var.visibility
+    devops_url                      = var.devops_url
+    sub                             = var.sub
+    sequence                        = var.sequence
+    code_reviewer_user              = tolist(data.azuredevops_users.user_rvecchi.users)[0]
+
+    providers = {
+        azurerm = azurerm,
+        azuredevops = azuredevops
+    }
+}
