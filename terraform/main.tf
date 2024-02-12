@@ -64,8 +64,8 @@ module "latest_project" {
     }
 }
 
- module "foraint_project" {
-    source        	                = "./projects/foraint"
+ module "codechallenge_project" {
+    source        	                = "./projects/codechallenge"
     workitem_template               = var.workitem_template
     version_control                 = var.version_control
     visibility                      = var.visibility

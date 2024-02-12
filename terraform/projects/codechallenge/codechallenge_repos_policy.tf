@@ -1,12 +1,12 @@
-resource "azuredevops_repository_policy_case_enforcement" "foraint_project_repo_policy_case_enforcement" {
-  project_id              = azuredevops_project.foraint_project.id
+resource "azuredevops_repository_policy_case_enforcement" "codechallenge_project_repo_policy_case_enforcement" {
+  project_id              = azuredevops_project.codechallenge_project.id
   enabled                 = true
   blocking                = true
   enforce_consistent_case = true
 }
 
-resource "azuredevops_branch_policy_auto_reviewers" "foraint_project_branch_policy_auto_reviewers" {
-  project_id = azuredevops_project.foraint_project.id
+resource "azuredevops_branch_policy_auto_reviewers" "codechallenge_project_branch_policy_auto_reviewers" {
+  project_id = azuredevops_project.codechallenge_project.id
   enabled  = true
   blocking = true
 
@@ -20,8 +20,8 @@ resource "azuredevops_branch_policy_auto_reviewers" "foraint_project_branch_poli
   }
 }
 
-resource "azuredevops_branch_policy_comment_resolution" "foraint_project_branch_policy_comment_resolution" {
-  project_id = azuredevops_project.foraint_project.id
+resource "azuredevops_branch_policy_comment_resolution" "codechallenge_project_branch_policy_comment_resolution" {
+  project_id = azuredevops_project.codechallenge_project.id
   enabled  = true
   blocking = true
   settings {
@@ -31,8 +31,8 @@ resource "azuredevops_branch_policy_comment_resolution" "foraint_project_branch_
   }
 }
 
-resource "azuredevops_branch_policy_merge_types" "foraint_project_branch_policy_merge_types" {
-  project_id = azuredevops_project.foraint_project.id
+resource "azuredevops_branch_policy_merge_types" "codechallenge_project_branch_policy_merge_types" {
+  project_id = azuredevops_project.codechallenge_project.id
   enabled  = true
   blocking = true
 
@@ -47,8 +47,8 @@ resource "azuredevops_branch_policy_merge_types" "foraint_project_branch_policy_
   }
 }
 
-resource "azuredevops_branch_policy_min_reviewers" "foraint_project_branch_policy_min_reviewers" {
-  project_id = azuredevops_project.foraint_project.id
+resource "azuredevops_branch_policy_min_reviewers" "codechallenge_project_branch_policy_min_reviewers" {
+  project_id = azuredevops_project.codechallenge_project.id
   enabled  = true
   blocking = true
 
@@ -64,8 +64,8 @@ resource "azuredevops_branch_policy_min_reviewers" "foraint_project_branch_polic
   }
 }
 
-resource "azuredevops_branch_policy_work_item_linking" "foraint_project_branch_policy_workitem_linking" {
-  project_id = azuredevops_project.foraint_project.id
+resource "azuredevops_branch_policy_work_item_linking" "codechallenge_project_branch_policy_workitem_linking" {
+  project_id = azuredevops_project.codechallenge_project.id
   enabled  = false
   blocking = true
 
