@@ -92,9 +92,9 @@ resource "azuredevops_git_repository" "coldstorage_project_repo_vectravrlsite" {
   }
 }
 
-resource "azuredevops_git_repository" "coldstorage_project_repo_misc" {
+resource "azuredevops_git_repository" "coldstorage_project_repo_vecmisc" {
   project_id        = azuredevops_project.coldstorage_project.id
-  name              = "Misc"
+  name              = "Vec-Misc"
   default_branch    = "refs/heads/main"
   initialization {
     init_type = "Clean"
