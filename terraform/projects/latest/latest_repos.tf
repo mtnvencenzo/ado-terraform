@@ -109,3 +109,31 @@ resource "azuredevops_build_folder" "latest_project_build_folder_sharedinfrastru
     prevent_destroy = true
   }
 }
+
+
+# ---------------------------
+# Setting up Kelso repository
+# ---------------------------
+resource "azuredevops_git_repository" "latest_project_repo_kelso" {
+  project_id        = azuredevops_project.latest_project.id
+  name              = "Kelso"
+  default_branch    = "refs/heads/main"
+  initialization {
+    init_type = "Clean"
+  }
+  lifecycle {
+    prevent_destroy = true
+    ignore_changes = [
+      initialization,
+    ]
+  }
+}
+
+resource "azuredevops_build_folder" "latest_project_build_folder_kelso" {
+  project_id  = azuredevops_project.latest_project.id
+  path        = "\\Kelso"
+  description = "Pipelines releated to the kelso repository projects"
+  lifecycle {
+    prevent_destroy = true
+  }
+}
