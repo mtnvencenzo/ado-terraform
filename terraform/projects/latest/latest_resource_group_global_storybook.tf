@@ -39,30 +39,3 @@ resource "azurerm_role_assignment" "latest_project_global_storybook_resource_gro
   ]
 }
 
-resource "azurerm_role_assignment" "latest_project_global_storybook_resource_group_cnd_endpoint_contributor_role_assignment" {
-  scope                 = azurerm_resource_group.latest_project_global_storybook_resource_group.id
-  role_definition_name  = "CDN Endpoint Contributor"
-  principal_id          = azuread_service_principal.app_reg_latest_project_service_principal.id
-  lifecycle {
-    prevent_destroy = true
-  }
-  depends_on = [ 
-    azurerm_resource_group.latest_project_global_storybook_resource_group,
-    azuread_service_principal.app_reg_latest_project_service_principal,
-    azuredevops_serviceendpoint_azurerm.app_reg_latest_project_sc_sp
-  ]
-}
-
-resource "azurerm_role_assignment" "latest_project_global_storybook_resource_group_cnd_profile_contributor_role_assignment" {
-  scope                 = azurerm_resource_group.latest_project_global_storybook_resource_group.id
-  role_definition_name  = "CDN Profile Contributor"
-  principal_id          = azuread_service_principal.app_reg_latest_project_service_principal.id
-  lifecycle {
-    prevent_destroy = true
-  }
-  depends_on = [ 
-    azurerm_resource_group.latest_project_global_storybook_resource_group,
-    azuread_service_principal.app_reg_latest_project_service_principal,
-    azuredevops_serviceendpoint_azurerm.app_reg_latest_project_sc_sp
-  ]
-}
