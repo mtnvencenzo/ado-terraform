@@ -84,6 +84,36 @@ resource "azuredevops_build_folder" "latest_project_build_folder_drinks" {
 
 
 # ---------------------------
+# Setting up drinks images repository
+# ---------------------------
+resource "azuredevops_git_repository" "latest_project_repo_drinks_images" {
+  project_id        = azuredevops_project.latest_project.id
+  name              = "Drinks-Images"
+  default_branch    = "refs/heads/main"
+  initialization {
+    init_type = "Clean"
+  }
+  lifecycle {
+    prevent_destroy = true
+    ignore_changes = [
+      initialization,
+    ]
+  }
+}
+
+resource "azuredevops_build_folder" "latest_project_build_folder_drinks_images" {
+  project_id  = azuredevops_project.latest_project.id
+  path        = "\\Drinks-Images"
+  description = "Pipelines releated to the drinks images repository projects"
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+
+
+
+# ---------------------------
 # Setting up sharedinfrastructure repository
 # ---------------------------
 resource "azuredevops_git_repository" "latest_project_repo_sharedinfrastructure" {
