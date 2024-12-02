@@ -78,7 +78,7 @@ resource "azuredevops_build_folder" "latest_project_build_folder_drinks" {
   path        = "\\Drinks"
   description = "Pipelines releated to the drinks repository projects"
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 
@@ -115,7 +115,7 @@ resource "azuredevops_build_folder" "latest_project_build_folder_drinks_images" 
   path        = "\\Drinks-Images"
   description = "Pipelines releated to the drinks images repository projects"
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 
