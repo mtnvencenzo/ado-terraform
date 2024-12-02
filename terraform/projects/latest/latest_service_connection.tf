@@ -62,7 +62,7 @@ resource "azuredevops_pipeline_authorization" "app_reg_latest_project_sc_sp_pipe
 resource "azurerm_role_assignment" "app_reg_latest_project_sc_terraform_storage_account_auth_role_assignment" {
   scope                 = data.azurerm_storage_account.terraform_storage_account.id
   role_definition_name  = "Contributor"
-  principal_id          = azuread_service_principal.app_reg_latest_project_service_principal.id
+  principal_id          = azuread_service_principal.app_reg_latest_project_service_principal.object_id
 
   lifecycle {
     prevent_destroy = false
