@@ -81,6 +81,14 @@ resource "azuredevops_build_folder" "latest_project_build_folder_drinks" {
     prevent_destroy = true
   }
 }
+resource "azuredevops_build_folder" "latest_project_build_folder_cocktails" {
+  project_id  = azuredevops_project.latest_project.id
+  path        = "\\Cocktails"
+  description = "Pipelines releated to the cocktails repository projects"
+  lifecycle {
+    prevent_destroy = true
+  }
+}
 
 
 # ---------------------------
@@ -94,7 +102,7 @@ resource "azuredevops_git_repository" "latest_project_repo_drinks_images" {
     init_type = "Clean"
   }
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
     ignore_changes = [
       initialization,
     ]
@@ -109,6 +117,16 @@ resource "azuredevops_build_folder" "latest_project_build_folder_drinks_images" 
     prevent_destroy = true
   }
 }
+
+resource "azuredevops_build_folder" "latest_project_build_folder_cocktails_images" {
+  project_id  = azuredevops_project.latest_project.id
+  path        = "\\Cocktails-Images"
+  description = "Pipelines releated to the cocktails images repository projects"
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
 
 
 

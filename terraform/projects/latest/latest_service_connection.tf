@@ -63,7 +63,8 @@ resource "azurerm_role_assignment" "app_reg_latest_project_sc_terraform_storage_
   scope                 = data.azurerm_storage_account.terraform_storage_account.id
   role_definition_name  = "Contributor"
   principal_id          = azuread_service_principal.app_reg_latest_project_service_principal.id
+
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }

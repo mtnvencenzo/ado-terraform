@@ -16,6 +16,6 @@ resource "azurerm_role_assignment" "terraform_drinks_images_container_auth_role_
   role_definition_name  = "Owner"
   principal_id          = azuread_service_principal.app_reg_latest_project_service_principal.id
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }

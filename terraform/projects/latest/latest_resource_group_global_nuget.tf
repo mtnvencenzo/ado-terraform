@@ -15,7 +15,7 @@ resource "azurerm_role_assignment" "latest_project_global_nuget_resource_group_o
   role_definition_name  = "Owner"
   principal_id          = azuread_service_principal.app_reg_latest_project_service_principal.id
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
   depends_on = [ 
     azurerm_resource_group.latest_project_global_nuget_resource_group,
@@ -29,8 +29,9 @@ resource "azurerm_role_assignment" "latest_project_global_nuget_resource_group_b
   scope                 = azurerm_resource_group.latest_project_global_nuget_resource_group.id
   role_definition_name  = "Storage Blob Data Contributor"
   principal_id          = azuread_service_principal.app_reg_latest_project_service_principal.id
+
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
   depends_on = [ 
     azurerm_resource_group.latest_project_global_nuget_resource_group,
