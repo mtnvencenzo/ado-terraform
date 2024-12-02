@@ -81,6 +81,7 @@ resource "azuredevops_build_folder" "latest_project_build_folder_drinks" {
     prevent_destroy = true
   }
 }
+
 resource "azuredevops_build_folder" "latest_project_build_folder_cocktails" {
   project_id  = azuredevops_project.latest_project.id
   path        = "\\Cocktails"
