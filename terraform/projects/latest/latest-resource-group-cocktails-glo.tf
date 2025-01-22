@@ -27,8 +27,8 @@ resource "azurerm_role_assignment" "latest_project_glo_cocktails_resource_group_
 }
 
 
-resource "azurerm_role_assignment" "latest_project_prd_cocktails_resource_group_blob_contrib_auth_role_assignment" {
-  scope                 = azurerm_resource_group.latest_project_prd_cocktails_resource_group.id
+resource "azurerm_role_assignment" "latest_project_glo_cocktails_resource_group_blob_contrib_auth_role_assignment" {
+  scope                 = azurerm_resource_group.latest_project_glo_cocktails_resource_group.id
   role_definition_name  = "Storage Blob Data Contributor"
   principal_id          = azuread_service_principal.app_reg_latest_project_service_principal.object_id
 
@@ -36,7 +36,7 @@ resource "azurerm_role_assignment" "latest_project_prd_cocktails_resource_group_
     prevent_destroy = false
   }
   depends_on = [ 
-    azurerm_resource_group.latest_project_prd_cocktails_resource_group,
+    azurerm_resource_group.latest_project_glo_cocktails_resource_group,
     azuread_service_principal.app_reg_latest_project_service_principal,
     azuredevops_serviceendpoint_azurerm.app_reg_latest_project_sc_sp
   ]
