@@ -28,34 +28,6 @@ resource "azuredevops_build_folder" "latest_project_build_folder_cezzi" {
 
 
 # ---------------------------
-# Setting up deepsleep repository
-# ---------------------------
-resource "azuredevops_git_repository" "latest_project_repo_deepsleep" {
-  project_id        = azuredevops_project.latest_project.id
-  name              = "DeepSleep"
-  default_branch    = "refs/heads/main"
-  initialization {
-    init_type = "Clean"
-  }
-  lifecycle {
-    prevent_destroy = true
-    ignore_changes = [
-      initialization,
-    ]
-  }
-}
-
-resource "azuredevops_build_folder" "latest_projectbuild_folder_deepsleep" {
-  project_id  = azuredevops_project.latest_project.id
-  path        = "\\DeepSleep"
-  description = "Pipelines releated to the deepsleep repository projects"
-  lifecycle {
-    prevent_destroy = true
-  }
-}
-
-
-# ---------------------------
 # Setting up drinks repository
 # ---------------------------
 resource "azuredevops_git_repository" "latest_project_repo_drinks" {

@@ -91,3 +91,18 @@ resource "azuredevops_git_repository" "coldstorage_project_repo_vectravrlsite" {
     ]
   }
 }
+
+resource "azuredevops_git_repository" "coldstorage_project_repo_vecdeepsleep" {
+  project_id        = azuredevops_project.coldstorage_project.id
+  name              = "Vec-DeepSleep"
+  default_branch    = "refs/heads/main"
+  initialization {
+    init_type = "Clean"
+  }
+  lifecycle {
+    prevent_destroy = true
+    ignore_changes = [
+      initialization,
+    ]
+  }
+}
