@@ -90,6 +90,7 @@ stages:
           
           - script: |
               released="prod-release-$(date +%Y%m%d)"
-              git tag -a $(released)
+              git tag -a "$(released)""
+              get fetch
               git push origin HEAD:main
             displayName: 'Apply Git Tag'
