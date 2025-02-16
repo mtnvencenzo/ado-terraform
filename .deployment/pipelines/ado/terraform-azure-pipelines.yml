@@ -89,7 +89,7 @@ stages:
               commandOptions: '-var "PAT=$(terraform_pat)" -auto-approve'
           
           - script: |
-            git tag $(resources.pipeline.MyBuild.runName)
-            git push origin $(resources.pipeline.MyBuild.runName)
+              git tag $(resources.pipeline.MyBuild.runName)
+              git push origin $(resources.pipeline.MyBuild.runName)
             condition: and(not(or(failed(), canceled())), eq(variables['branchType'], 'main'))
             displayName: 'Apply Git Tag'
