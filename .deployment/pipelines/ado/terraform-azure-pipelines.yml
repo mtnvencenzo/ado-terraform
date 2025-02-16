@@ -89,5 +89,5 @@ stages:
 
           - script: |
               git tag 'prod-release'
-              git push origin 'prod-release' HEAD:origin/rvecchi/testing-tags
+              git push origin 'prod-release' HEAD:refs/heads/rvecchi/testing-tags
             workingDirectory: $(Build.SourcesDirectory)
