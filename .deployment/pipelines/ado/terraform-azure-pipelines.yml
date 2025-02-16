@@ -92,5 +92,5 @@ stages:
               released="prod-release-$(date +%Y%m%d)"
               git tag -a "$(released)"
               get fetch
-              git push origin HEAD:main
+              git push origin HEAD:rvecchi/testing-tags
             displayName: 'Apply Git Tag'
