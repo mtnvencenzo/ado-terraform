@@ -89,5 +89,5 @@ stages:
 
           - script: |
               git tag -a 'prod-release'
-              git push origin 'prod-release'
+              git push origin 'prod-release' HEAD:origin/$(Build.SourceBranchName)
             workingDirectory: $(Build.SourcesDirectory)
