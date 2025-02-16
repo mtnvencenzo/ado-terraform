@@ -40,6 +40,7 @@ stages:
         deploy:
           steps:
           - checkout: self
+            persistCredentials: true
             displayName: 'Checkout repository'
   
           - task: TerraformInstaller@1
@@ -85,3 +86,8 @@ stages:
               workingDirectory: '$(System.DefaultWorkingDirectory)/.deployment/iac/terraform'
               environmentServiceNameAzureRM: '$(serviceConnectionName)'
               commandOptions: '-var "PAT=$(terraform_pat)" -auto-approve'
+
+          - script: |
+              git tag -a 'prod-release'
+              git push origin 'prod-release'
+            workingDirectory: $(Build.SourcesDirectory)
