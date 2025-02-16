@@ -41,6 +41,7 @@ stages:
         deploy:
           steps:
           - checkout: self
+            persistCredentials: true
             displayName: 'Checkout repository'
   
           - task: TerraformInstaller@1
@@ -88,7 +89,7 @@ stages:
               commandOptions: '-var "PAT=$(terraform_pat)" -auto-approve'
           
           - script: |
-              released="prod-release-$(date +%Y%m%d)"
-              echo "##vso[build.addbuildtag]$released"
+            git tag $(resources.pipeline.MyBuild.runName)
+            git push origin $(resources.pipeline.MyBuild.runName)
             condition: and(not(or(failed(), canceled())), eq(variables['branchType'], 'main'))
             displayName: 'Apply Git Tag'
