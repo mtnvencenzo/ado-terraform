@@ -88,8 +88,8 @@ stages:
               commandOptions: '-var "PAT=$(terraform_pat)" -auto-approve'
 
           - script: |
-              released="prod-release-$(date +%Y%m%d %T %z)"
-              git tag "$released"
-              git push origin "$released" HEAD:refs/heads/main
+              released="prod-release-$(date +%Y%m%d_%H%M%S_%z)"
+              git tag $released
+              git push origin $released HEAD:refs/heads/main
             condition: and(not(or(failed(), canceled())), eq(variables['branchType'], 'main'))
             workingDirectory: $(Build.SourcesDirectory)
