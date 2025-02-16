@@ -106,3 +106,18 @@ resource "azuredevops_git_repository" "coldstorage_project_repo_vecdeepsleep" {
     ]
   }
 }
+
+resource "azuredevops_git_repository" "coldstorage_project_repo_vecstash" {
+  project_id        = azuredevops_project.coldstorage_project.id
+  name              = "Vec-Stash"
+  default_branch    = "refs/heads/main"
+  initialization {
+    init_type = "Clean"
+  }
+  lifecycle {
+    prevent_destroy = true
+    ignore_changes = [
+      initialization
+    ]
+  }
+}

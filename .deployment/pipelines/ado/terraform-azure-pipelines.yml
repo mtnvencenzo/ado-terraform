@@ -2,6 +2,7 @@ variables:
   serviceConnectionName: 'sc-vec-eus-terraform-ado-001'
   terraformStateResourceGroup: 'rg-vec-eus-administration-001'
   terraformStateStorageAccount: 'stveceusterraformstat001'
+  currentDate: $[ format('{0:yyyy}.{0:MM}.{0:dd}', pipeline.startTime) ]
   ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
     branchType: main
   ${{ if ne(variables['Build.SourceBranchName'], 'main') }}: 
@@ -85,3 +86,9 @@ stages:
               workingDirectory: '$(System.DefaultWorkingDirectory)/.deployment/iac/terraform'
               environmentServiceNameAzureRM: '$(serviceConnectionName)'
               commandOptions: '-var "PAT=$(terraform_pat)" -auto-approve'
+          
+          - script: |
+              released="prod-release-$(date +%Y%m%d)"
+              echo "##vso[build.addbuildtag]$released"
+            condition: and(not(or(failed(), canceled())), eq(variables['branchType'], 'main'))
+            displayName: 'Apply Git Tag'
