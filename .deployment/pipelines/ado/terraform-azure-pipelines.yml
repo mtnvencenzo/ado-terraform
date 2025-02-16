@@ -89,6 +89,7 @@ stages:
               commandOptions: '-var "PAT=$(terraform_pat)" -auto-approve'
           
           - script: |
-              git tag $(resources.pipeline.MyBuild.runName)
-              git push origin $(resources.pipeline.MyBuild.runName)
+              released="prod-release-$(date +%Y%m%d)"
+              git tag $(released)
+              git push origin $(released)
             displayName: 'Apply Git Tag'
