@@ -88,6 +88,6 @@ stages:
               commandOptions: '-var "PAT=$(terraform_pat)" -auto-approve'
 
           - script: |
-              git tag -a 'prod-release'
+              git tag 'prod-release'
               git push origin 'prod-release' HEAD:origin/$(Build.SourceBranchName)
             workingDirectory: $(Build.SourcesDirectory)
