@@ -88,11 +88,6 @@ stages:
               commandOptions: '-var "PAT=$(terraform_pat)" -auto-approve'
 
           - script: |
-              git tag $(GitVersion.NugetVersionV2)
-              git push origin 'prod-release' HEAD:origin/$(Build.SourceBranchName)
-            workingDirectory: $(Build.SourcesDirectory)
-
-          - script: |
               git tag 'prod-release'
               git push 'prod-release' refs/heads/rvecchi/testing-tags
             workingDirectory: $(Build.SourcesDirectory)
