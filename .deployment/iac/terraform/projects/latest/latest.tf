@@ -12,10 +12,10 @@ resource "azuredevops_project" "latest_project" {
 resource "azuredevops_project_features" "latest_project_features" {
   project_id = azuredevops_project.latest_project.id
   features = {
-    "boards" = "enabled"
+    "boards"       = "enabled"
     "repositories" = "enabled"
-    "pipelines" = "enabled"
-    "artifacts" = "enabled"
-    "testplans" = "disabled"
+    "pipelines"    = "enabled"
+    "artifacts"    = "enabled"
+    "testplans"    = "disabled"
   }
 }

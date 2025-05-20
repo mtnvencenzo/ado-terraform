@@ -12,10 +12,10 @@ resource "azuredevops_project" "codechallenge_project" {
 resource "azuredevops_project_features" "codechallenge_project_features" {
   project_id = azuredevops_project.codechallenge_project.id
   features = {
-    "boards" = "disabled"
+    "boards"       = "disabled"
     "repositories" = "enabled"
-    "pipelines" = "enabled"
-    "artifacts" = "disabled"
-    "testplans" = "disabled"
+    "pipelines"    = "enabled"
+    "artifacts"    = "disabled"
+    "testplans"    = "disabled"
   }
 }
