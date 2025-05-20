@@ -29,4 +29,4 @@ jobs:
     secrets:
       arm_client_secret: ${{ secrets.ARM_CLIENT_SECRET }}
       terraform_module_repo_access_key_secret: ${{ secrets.TERRAFORM_MODULE_REPO_ACCESS_KEY_SECRET }}
-      command_line_args: '-var "PAT=$(secrets.AZURE_DEVOPS_TERRAFORM_PAT_TOKEN)"'
+      command_line_args: '-var "PAT=${{ secrets.AZURE_DEVOPS_TERRAFORM_PAT_TOKEN }}"'
