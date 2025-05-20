@@ -1,47 +1,47 @@
 variable "PAT" {
-	type = string
-	default = ""
+  type    = string
+  default = ""
 }
 
 variable "workitem_template" {
-	type = string
-	default = "Scrum"
+  type    = string
+  default = "Scrum"
 }
 
 variable "version_control" {
-	type = string
-	default = "Git"
+  type    = string
+  default = "Git"
 }
 
 variable "visibility" {
-	type = string
-	default = "private"
+  type    = string
+  default = "private"
 }
 
 variable "devops_url" {
-	type = string
-	default = "https://dev.azure.com/vecchi"
+  type    = string
+  default = "https://dev.azure.com/vecchi"
 }
 
 variable "region" {
-  type	= string
+  type    = string
   default = "eus"
 }
 
 variable "sub" {
-  type    = string
+  type        = string
   description = "Subscription short identitifer to be used in resource naming"
-  default = "vec"
+  default     = "vec"
 }
 
 variable "sequence" {
-  type    = string
+  type        = string
   description = "The sequence number of the resource typically starting with 001"
-  default = "001"
+  default     = "001"
 }
 
 variable "code_reviewer_user" {
   type = object({
-	id = string
+    id = string
   })
 }

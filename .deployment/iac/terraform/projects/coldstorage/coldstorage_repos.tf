@@ -3,9 +3,9 @@
 # Setting up cezzi repository
 # ---------------------------
 resource "azuredevops_git_repository" "coldstorage_project_repo_bhframework" {
-  project_id        = azuredevops_project.coldstorage_project.id
-  name              = "BH-Framework"
-  default_branch    = "refs/heads/main"
+  project_id     = azuredevops_project.coldstorage_project.id
+  name           = "BH-Framework"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
@@ -18,9 +18,9 @@ resource "azuredevops_git_repository" "coldstorage_project_repo_bhframework" {
 }
 
 resource "azuredevops_git_repository" "coldstorage_project_repo_bhintegrations" {
-  project_id        = azuredevops_project.coldstorage_project.id
-  name              = "BH-Integrations"
-  default_branch    = "refs/heads/main"
+  project_id     = azuredevops_project.coldstorage_project.id
+  name           = "BH-Integrations"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
@@ -33,9 +33,9 @@ resource "azuredevops_git_repository" "coldstorage_project_repo_bhintegrations" 
 }
 
 resource "azuredevops_git_repository" "coldstorage_project_repo_bhjobprocessing" {
-  project_id        = azuredevops_project.coldstorage_project.id
-  name              = "BH-JobProcessing"
-  default_branch    = "refs/heads/main"
+  project_id     = azuredevops_project.coldstorage_project.id
+  name           = "BH-JobProcessing"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
@@ -48,9 +48,9 @@ resource "azuredevops_git_repository" "coldstorage_project_repo_bhjobprocessing"
 }
 
 resource "azuredevops_git_repository" "coldstorage_project_repo_bhsmg" {
-  project_id        = azuredevops_project.coldstorage_project.id
-  name              = "BH-Smg"
-  default_branch    = "refs/heads/main"
+  project_id     = azuredevops_project.coldstorage_project.id
+  name           = "BH-Smg"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
@@ -63,9 +63,9 @@ resource "azuredevops_git_repository" "coldstorage_project_repo_bhsmg" {
 }
 
 resource "azuredevops_git_repository" "coldstorage_project_repo_vechikingsite" {
-  project_id        = azuredevops_project.coldstorage_project.id
-  name              = "Vec-HikingSite"
-  default_branch    = "refs/heads/main"
+  project_id     = azuredevops_project.coldstorage_project.id
+  name           = "Vec-HikingSite"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
@@ -78,9 +78,9 @@ resource "azuredevops_git_repository" "coldstorage_project_repo_vechikingsite" {
 }
 
 resource "azuredevops_git_repository" "coldstorage_project_repo_vectravrlsite" {
-  project_id        = azuredevops_project.coldstorage_project.id
-  name              = "Vec-TravelSite"
-  default_branch    = "refs/heads/main"
+  project_id     = azuredevops_project.coldstorage_project.id
+  name           = "Vec-TravelSite"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
@@ -93,9 +93,9 @@ resource "azuredevops_git_repository" "coldstorage_project_repo_vectravrlsite" {
 }
 
 resource "azuredevops_git_repository" "coldstorage_project_repo_vecdeepsleep" {
-  project_id        = azuredevops_project.coldstorage_project.id
-  name              = "Vec-DeepSleep"
-  default_branch    = "refs/heads/main"
+  project_id     = azuredevops_project.coldstorage_project.id
+  name           = "Vec-DeepSleep"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
@@ -108,9 +108,9 @@ resource "azuredevops_git_repository" "coldstorage_project_repo_vecdeepsleep" {
 }
 
 resource "azuredevops_git_repository" "coldstorage_project_repo_vecstash" {
-  project_id        = azuredevops_project.coldstorage_project.id
-  name              = "Vec-Stash"
-  default_branch    = "refs/heads/main"
+  project_id     = azuredevops_project.coldstorage_project.id
+  name           = "Vec-Stash"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }

@@ -7,11 +7,11 @@ data "azuredevops_users" "build_service" {
 # [GenericRead] and [CreateTag] were there by default, adding [GenericContribute]
 # --------------------------------------------------------------------------------------------------
 resource "azuredevops_git_permissions" "build_service_permission" {
-  project_id    = azuredevops_project.latest_project.id
-  principal     = one(data.azuredevops_users.build_service.users).descriptor
+  project_id = azuredevops_project.latest_project.id
+  principal  = one(data.azuredevops_users.build_service.users).descriptor
   permissions = {
-    GenericContribute     = "Allow"
-    GenericRead           = "Allow"
-    CreateTag             = "Allow"
+    GenericContribute = "Allow"
+    GenericRead       = "Allow"
+    CreateTag         = "Allow"
   }
 }

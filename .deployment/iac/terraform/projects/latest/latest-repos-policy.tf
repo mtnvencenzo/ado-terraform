@@ -8,34 +8,34 @@ resource "azuredevops_repository_policy_case_enforcement" "latest_project_repo_p
 
 resource "azuredevops_branch_policy_auto_reviewers" "latest_project_branch_policy_auto_reviewers" {
   project_id = azuredevops_project.latest_project.id
-  enabled  = true
-  blocking = true
+  enabled    = true
+  blocking   = true
 
   settings {
-    auto_reviewer_ids  = [var.code_reviewer_user.id]
-    submitter_can_vote = true
+    auto_reviewer_ids           = [var.code_reviewer_user.id]
+    submitter_can_vote          = true
     minimum_number_of_reviewers = 1
     scope {
-      match_type     = "DefaultBranch"
+      match_type = "DefaultBranch"
     }
   }
 }
 
 resource "azuredevops_branch_policy_comment_resolution" "latest_project_branch_policy_comment_resolution" {
   project_id = azuredevops_project.latest_project.id
-  enabled  = true
-  blocking = true
+  enabled    = true
+  blocking   = true
   settings {
     scope {
-      match_type     = "DefaultBranch"
+      match_type = "DefaultBranch"
     }
   }
 }
 
 resource "azuredevops_branch_policy_merge_types" "latest_project_branch_policy_merge_types" {
   project_id = azuredevops_project.latest_project.id
-  enabled  = true
-  blocking = true
+  enabled    = true
+  blocking   = true
 
   settings {
     allow_squash                  = true
@@ -43,15 +43,15 @@ resource "azuredevops_branch_policy_merge_types" "latest_project_branch_policy_m
     allow_basic_no_fast_forward   = false
     allow_rebase_with_merge       = false
     scope {
-      match_type     = "DefaultBranch"
+      match_type = "DefaultBranch"
     }
   }
 }
 
 resource "azuredevops_branch_policy_min_reviewers" "latest_project_branch_policy_min_reviewers" {
   project_id = azuredevops_project.latest_project.id
-  enabled  = true
-  blocking = true
+  enabled    = true
+  blocking   = true
 
   settings {
     reviewer_count                         = 1
@@ -60,19 +60,19 @@ resource "azuredevops_branch_policy_min_reviewers" "latest_project_branch_policy
     allow_completion_with_rejects_or_waits = false
     on_push_reset_approved_votes           = true # OR on_push_reset_all_votes = true
     scope {
-      match_type     = "DefaultBranch"
+      match_type = "DefaultBranch"
     }
   }
 }
 
 resource "azuredevops_branch_policy_work_item_linking" "latest_project_branch_policy_workitem_linking" {
   project_id = azuredevops_project.latest_project.id
-  enabled  = false
-  blocking = true
+  enabled    = false
+  blocking   = true
 
   settings {
     scope {
-      match_type     = "DefaultBranch"
+      match_type = "DefaultBranch"
     }
   }
 }

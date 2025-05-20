@@ -12,10 +12,10 @@ resource "azuredevops_project" "coldstorage_project" {
 resource "azuredevops_project_features" "coldstorage_project_features" {
   project_id = azuredevops_project.coldstorage_project.id
   features = {
-    "boards" = "disabled"
+    "boards"       = "disabled"
     "repositories" = "enabled"
-    "pipelines" = "disabled"
-    "artifacts" = "disabled"
-    "testplans" = "disabled"
+    "pipelines"    = "disabled"
+    "artifacts"    = "disabled"
+    "testplans"    = "disabled"
   }
 }
