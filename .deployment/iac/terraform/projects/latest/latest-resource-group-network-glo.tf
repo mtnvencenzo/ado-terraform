@@ -20,8 +20,7 @@ resource "azurerm_role_assignment" "latest_project_global_network_resource_group
   }
   depends_on = [
     azurerm_resource_group.latest_project_global_network_resource_group,
-    azuread_service_principal.app_reg_latest_project_service_principal,
-    azuredevops_serviceendpoint_azurerm.app_reg_latest_project_sc_sp
+    azuread_service_principal.app_reg_latest_project_service_principal
   ]
 }
 
@@ -36,7 +35,6 @@ resource "azurerm_role_assignment" "latest_project_global_network_resource_group
   }
   depends_on = [
     azurerm_resource_group.latest_project_global_network_resource_group,
-    azuread_service_principal.app_reg_latest_project_service_principal,
-    azuredevops_serviceendpoint_azurerm.app_reg_latest_project_sc_sp
+    azuread_service_principal.app_reg_latest_project_service_principal
   ]
 }
