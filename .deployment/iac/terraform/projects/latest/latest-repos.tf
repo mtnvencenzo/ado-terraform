@@ -143,20 +143,20 @@
 
 
 
-# ---------------------------
-# Setting up Terraform Mods repository
-# ---------------------------
-resource "azuredevops_git_repository" "latest_project_repo_terraform_modules" {
-  project_id     = azuredevops_project.latest_project.id
-  name           = "Terraform-Modules"
-  default_branch = "refs/heads/main"
-  initialization {
-    init_type = "Clean"
-  }
-  lifecycle {
-    prevent_destroy = true
-    ignore_changes = [
-      initialization,
-    ]
-  }
-}
+# # ---------------------------
+# # Setting up Terraform Mods repository
+# # ---------------------------
+# resource "azuredevops_git_repository" "latest_project_repo_terraform_modules" {
+#   project_id     = azuredevops_project.latest_project.id
+#   name           = "Terraform-Modules"
+#   default_branch = "refs/heads/main"
+#   initialization {
+#     init_type = "Clean"
+#   }
+#   lifecycle {
+#     prevent_destroy = true
+#     ignore_changes = [
+#       initialization,
+#     ]
+#   }
+# }
