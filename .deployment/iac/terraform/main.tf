@@ -48,34 +48,34 @@ module "latest_project" {
   }
 }
 
-module "coldstorage_project" {
-  source             = "./projects/coldstorage"
-  workitem_template  = var.workitem_template
-  version_control    = var.version_control
-  visibility         = var.visibility
-  devops_url         = var.devops_url
-  sub                = var.sub
-  sequence           = var.sequence
-  code_reviewer_user = tolist(data.azuredevops_users.user_rvecchi.users)[0]
+# module "coldstorage_project" {
+#   source             = "./projects/coldstorage"
+#   workitem_template  = var.workitem_template
+#   version_control    = var.version_control
+#   visibility         = var.visibility
+#   devops_url         = var.devops_url
+#   sub                = var.sub
+#   sequence           = var.sequence
+#   code_reviewer_user = tolist(data.azuredevops_users.user_rvecchi.users)[0]
 
-  providers = {
-    azurerm     = azurerm,
-    azuredevops = azuredevops
-  }
-}
+#   providers = {
+#     azurerm     = azurerm,
+#     azuredevops = azuredevops
+#   }
+# }
 
-module "codechallenge_project" {
-  source             = "./projects/codechallenge"
-  workitem_template  = var.workitem_template
-  version_control    = var.version_control
-  visibility         = var.visibility
-  devops_url         = var.devops_url
-  sub                = var.sub
-  sequence           = var.sequence
-  code_reviewer_user = tolist(data.azuredevops_users.user_rvecchi.users)[0]
+# module "codechallenge_project" {
+#   source             = "./projects/codechallenge"
+#   workitem_template  = var.workitem_template
+#   version_control    = var.version_control
+#   visibility         = var.visibility
+#   devops_url         = var.devops_url
+#   sub                = var.sub
+#   sequence           = var.sequence
+#   code_reviewer_user = tolist(data.azuredevops_users.user_rvecchi.users)[0]
 
-  providers = {
-    azurerm     = azurerm,
-    azuredevops = azuredevops
-  }
-}
+#   providers = {
+#     azurerm     = azurerm,
+#     azuredevops = azuredevops
+#   }
+# }
