@@ -66,8 +66,9 @@ variable "sequence" {
   description = "The sequence number of the resource typically starting with 001"
   default     = "001"
 }
-variable "code_reviewer_user" {
-  type = object({
-    id = string
-  })
-}
+
+# variable "code_reviewer_user" {
+#   type = object({
+#     id = string
+#   })
+# }

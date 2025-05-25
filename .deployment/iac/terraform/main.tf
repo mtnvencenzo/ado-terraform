@@ -40,7 +40,7 @@ module "latest_project" {
   location                  = var.location
   sub                       = var.sub
   sequence                  = var.sequence
-  code_reviewer_user        = tolist(data.azuredevops_users.user_rvecchi.users)[0]
+  //code_reviewer_user        = tolist(data.azuredevops_users.user_rvecchi.users)[0]
 
   providers = {
     azurerm     = azurerm,
