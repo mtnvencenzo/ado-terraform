@@ -18,10 +18,10 @@ variable "visibility" {
   default = "private"
 }
 
-variable "devops_url" {
-  type    = string
-  default = "https://dev.azure.com/vecchi"
-}
+# variable "devops_url" {
+#   type    = string
+#   default = "https://dev.azure.com/vecchi"
+# }
 
 variable "azurerm_spn_tenantid" {
   type    = string
