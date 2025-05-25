@@ -1,4 +1,4 @@
-name: CICD-ADO-Terraform
+name: cicd-terraform
 
 on:
   pull_request:

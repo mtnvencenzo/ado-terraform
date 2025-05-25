@@ -28,10 +28,10 @@ provider "azurerm" {
 # }
 
 module "latest_project" {
-  source                    = "./projects/latest"
-  workitem_template         = var.workitem_template
-  version_control           = var.version_control
-  visibility                = var.visibility
+  source            = "./projects/latest"
+  workitem_template = var.workitem_template
+  version_control   = var.version_control
+  visibility        = var.visibility
   //devops_url                = var.devops_url
   azurerm_spn_tenantid      = var.azurerm_spn_tenantid
   azurerm_subscription_id   = var.azurerm_subscription_id
