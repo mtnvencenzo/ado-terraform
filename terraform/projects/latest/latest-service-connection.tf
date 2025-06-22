@@ -6,13 +6,13 @@ resource "azuread_application" "app_reg_latest_project" {
 }
 
 
-resource "azuread_application_password" "app_reg_latest_project_app_password" {
-  application_id = azuread_application.app_reg_latest_project.id
-  display_name   = "primary"
-  lifecycle {
-    prevent_destroy = true
-  }
-}
+# resource "azuread_application_password" "app_reg_latest_project_app_password" {
+#   application_id = azuread_application.app_reg_latest_project.id
+#   display_name   = "primary"
+#   lifecycle {
+#     prevent_destroy = true
+#   }
+# }
 
 
 resource "azuread_service_principal" "app_reg_latest_project_service_principal" {
